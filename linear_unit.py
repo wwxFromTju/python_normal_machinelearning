@@ -3,7 +3,7 @@
 
 import numpy as np
 
-class  Perceptron(object):
+class  Linear_unit(object):
     """docstring for  Perceptron"""
     def __init__(self, num, activation):
         self.W = np.zeros(shape=num, dtype=np.float32)
@@ -36,27 +36,27 @@ class  Perceptron(object):
 
 
 def activation(x):
-    return 1 if x > 0 else 0
+    return x
 
 
 
-input_vecs = [[1,1], [0,0], [1,0], [0,1]]
-labels = [1, 0, 0, 0]
+input_vecs = [[5], [3], [8], [1.4], [10.1]]
+labels = [5500, 2300, 7600, 1800, 11400]
 
-def train_and_perceptron():
-    p = Perceptron(num=2, activation=activation)
-    p.train(input_vecs, labels, 10, 0.1)
+def train_linear_unit():
+    p = Linear_unit(num=1, activation=activation)
+    p.train(input_vecs, labels, 10, 0.01)
     return p
 
 if __name__ == '__main__':
     # 训练and感知器
-    and_perception = train_and_perceptron()
+    linear_unit = train_linear_unit()
     # 打印训练获得的权重
     print('*' * 20) 
-    print(and_perception.W)
-    print(and_perception.b)
+    print(linear_unit.W)
+    print(linear_unit.b)
     # 测试
-    print('1 and 1 = {}'.format(and_perception.cal([1, 1])))
-    print('0 and 0 = {}'.format(and_perception.cal([0, 0])))
-    print('1 and 0 = {}'.format(and_perception.cal([1, 0])))
-    print('0 and 1 = {}'.format(and_perception.cal([0, 1])))
+    print('3.4: {}'.format(linear_unit.cal([3.4])))
+    print('15: {}'.format(linear_unit.cal([15])))
+    print('1.5 {}'.format(linear_unit.cal([1.5])))
+    print('6.3: {}'.format(linear_unit.cal([6.3])))
